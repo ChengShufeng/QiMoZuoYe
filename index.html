@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>微软必应词典</title>
+	<link rel="shortcut icon" href="images/favicon.ico" />
+	<style type="text/css">
+		/* reset */
+		* {
+			margin: 0; padding: 0;
+		}
+
+		ol, ul {
+			    list-style: none;
+			}
+
+		body {
+			  font-family: "Microsoft Yahei",Tahoma,"SimSun";
+			  font-size: 12px;
+			}
+
+		img { 
+			 border: none;
+			 text-align: center;
+			 vertical-align: middle;
+			}
+
+		a, a:link, a:active, a:focus, a:hover {
+			       color: #666; 
+			       text-decoration: none;
+			   }
+
+	    .clearfix:after {
+	    	content: ".";
+            display: block;
+		    clear: both;
+		    height: 0;
+		    visibility: hidden;
+		}
+		
+		/* global */
+		html {
+			overflow-x: hidden;
+		}
+
+		.w1000 {
+			margin: 0 auto;
+			width: 1000px;
+		}
+		/* header */
+		#header {
+			background-color: #1a1a1a; 
+			height: 85px;
+		}
+
+		#logo {
+			float: left; 
+			padding:25px 0 0 25px;
+		}
+
+		#products {
+			float: right; 
+			text-align: center; 
+			padding-right:10px;
+		}
+
+		    #products ul {
+		    	overflow: hidden;
+		    }
+
+	        #products li {
+	        	float: left; 
+	        	font-size: 12px;
+	        }
+
+	            #products li a, #products li a:link {
+	            	color: #999; 
+	            	text-decoration: none; 
+	            	line-height: 20px; 
+	            	margin-left: 1px; 
+	            	width: 100px; 
+            	    height: 20px; 
+            	    background-color: #313131; 
+            	    display: block;
+            	}
+
+	            	#products li a:hover { 
+	            		background-color: #484848; 
+	            	}
+	    /* nav */
+	    #nav { 
+	    	height: 37px; 
+	    	line-height: 37px; 
+	    	background: #333; 
+	    	font-size: 16px; 
+	    }
+
+	        #nav li { 
+	        	float: left; 
+	        	padding: 0 25px; 
+	        }
+
+	        #nav a, #nav a:link { 
+	        	color: #adadad; 
+	        }
+
+	            #nav a:hover { 
+	            	color: #D7512C; 
+	            }
+	    /* slide */
+	    #slide { 
+	    	overflow: hidden; 
+	    	height: 398px; 
+	    	width: 100%; 
+	    	position: relative; 
+	    }
+
+        #slide_mask {
+        	width: 100%;
+        	height: 9px;
+        	bottom: 0;
+        	left: 0;
+        	position: absolute;
+        	z-index: 10000;
+        	background: url(images/bg_slide_mask.png) repeat-x;
+        }
+        
+	    .slide_main { 
+	    	text-align: center; 
+	    	height: 398px; 
+	    	overflow: hidden; 
+	    }
+
+	    #slide_img_wrap { 
+	    	width: 100%; 
+	    	height: 398px; 
+	    	position: relative; 
+	    }
+
+	        #slide_img_wrap a, #slide_img_wrap a:link { 
+	        	display: block; 
+	        	width: 100%; 
+	        	height: 100%; 
+	        }
+
+	    .slide_navi {
+	    	width: 1000px;
+	    	top: 0;
+	    	left: 0;
+	    	height: 1px;
+	    	position: relative;
+	    	margin: 0 auto;
+	    }
+
+	        .slide_navi #inner {
+	        	display: inline;
+	    	    position: absolute;
+	    	    top: -30px;
+	    	    right: 40px;
+	        }
+
+	        .slide_navi li {
+	        	float: left;
+	        }
+
+	        .slide_navi span {
+	        	margin-right: 4px;
+	        	float: left;
+	        	width: 17px;
+                height: 17px;
+                background: url(images/bg_slide_navi.png) -20px 0;
+	        }
+
+	        .slide_navi span:hover, .slide_navi .slide_navi_cur {
+	        	background: url(images/bg_slide_navi.png);
+	        }
+
+	    /* activities */
+	    #activities {
+            padding:50px 40px 100px;
+            width:920px;
+            margin:0 auto;
+            color:#333;
+        }
+
+        #activities .activities_name {
+        	font-size:36px; 
+        	margin-bottom:30px; 
+        	font-weight:normal;
+        }
+
+        #activities li {
+		        width:445px;
+		        height:115px;
+		        float:left;
+		        margin-bottom:20px;
+		    }
+
+			    #activities li.even {
+		            float:right;
+		        }
+
+	    #activities .img {
+			    width:240px;
+			    height:114px;
+			    float:left;
+			}
+			
+        #activities .desc {
+			    width:190px;
+			    float:right;
+			}
+
+	    #activities .desc_name {
+			    font-size:16px; 
+			    color:#069; 
+			    margin:0 0 10px;
+			}
+
+		    #activities .desc_name a,#activities .desc_name a:link {
+                color:#069;
+            }
+
+        #activities ul:after {
+	    	content: ".";
+            display: block;
+		    clear: both;
+		    height: 0;
+		    visibility: hidden;
+		}
+			
+	    /* footer */
+	    .footer {
+			    color: #fff;
+			    font-size: 12px;
+			    background: #333;
+			    border-top: 7px solid #D7512C;
+			    padding-bottom: 20px;
+			}
+
+
+		.footer .w1000:after {
+			content: ".";
+            display: block;
+		    clear: both;
+		    height: 0;
+		    visibility: hidden;
+		}   
+
+		.friend_link {
+				height: 220px;
+			    margin-top: 40px;
+			    text-align: center;
+			}
+
+		    .friend_link p {
+		        margin-left: 20px;
+		        text-align: left;
+		    }
+
+			    .friend_link p a, .friend_link p a:link {
+		            display: block;
+		            width: 210px;
+		            height: 32px;
+		            padding-left: 30px;
+		            background: url(images/bg_back.jpg) no-repeat 0 0;
+		        }
+
+                .friend_link p a:hover {
+                    background-position:0 -31px;
+                }
+
+            .friend_link ul {
+                    padding: 20px 0 0 15px;
+                }
+
+            .friend_link li {
+			        float: left;
+			        width: 100px;
+			        height: 90px;
+			        padding-left: 15px;
+			        font-size: 12px;
+			    }
+
+			    .friend_link li a, .friend_link li a:link {
+					text-decoration: none;
+					color: #fff;
+				}
+
+			    .friend_link li.on {
+                    padding-left: 25px;
+                }
+
+			.bing_product {
+					display: block;
+			        width: 68px;
+			        height: 68px;
+			        margin: 0 16px 5px;
+			        background: url(images/bg_bing_foot.gif) no-repeat;
+			    }
+
+            .bing_search {
+			        background-position: 0 0;
+			    }
+
+		    .fri.bing_dict {
+			        background-position: -68px 0;
+			    }
+
+		    .bing_desktop {
+			        background-position: -136px 0;
+			    }
+
+		    .bing_pinyin {
+			        background-position: -204px 0;
+			        width:67px;
+			    }
+
+		    .bing_bar {
+			        background-position: -272px 0;
+			    }
+
+		    .bing_navi {
+			        background-position: -340px 0;
+			    }
+
+		    .bing_robert {
+			        background-position: -408px 0;
+			    }
+			    
+		    .bing_map {
+			        background-position: -476px 0;
+			    }
+			    
+        .copyright { 
+        	float: left;
+		    margin-top: 15px;
+		}
+
+        .copyright li {
+		    float: left;
+		    margin: 0 10px;
+		}
+
+		    .copyright li.on {
+		        padding-right: 25px;
+		    }
+
+		    .copyright li a, .copyright li a:link {
+			    text-decoration: none;
+			    color: #fff;
+			}
+
+		    .copyright li a:hover {
+		        color: #999;
+		    }
+
+		.icp_num {
+		    float: right;
+		    margin-top: 15px;
+		}
+
+		.icp_num li {
+		    float: left;
+		    margin: 0 10px;
+		} 
+
+	    /*actions*/
+	    #actions {
+            position:fixed;
+            right:0;
+            top:310px;
+            width:67px;
+            height:205px;
+        }
+
+            #actions a,#actions a:link {
+		        display:block;
+		        width:67px;
+		        height:67px;
+		        margin-bottom:2px;
+		        background:url(images/actions.jpg) no-repeat;
+		    }
+
+		    #actions #toShare {
+                background-position: 0 0;
+            }
+
+	        #actions #toShare:hover {
+                background-position: -73px 0;
+            }
+
+	        #actions #toFeedback {
+	            background-position: 0 -69px;
+	        }
+
+	        #actions #toFeedback:hover {
+	            background-position: -73px -69px;
+	        }
+
+	        #actions #toAttention {
+	            background-position: 0 -138px;
+	        }
+
+	        #actions #toAttention:hover {
+	            background-position: -73px -138px;
+	        }
+
+	    .action_box {
+	    	display: none;
+		    position:fixed;
+		    z-index:10000;
+		    top:151px;
+		    right:-275px;
+		    color:#333;
+		    padding:0 20px 25px;
+		    width:225px;
+		    overflow:hidden;
+		    border:5px solid #ffa615;
+		    background:#fff;
+		}
+
+		    .action_box .inner {
+		        margin-left:60px;
+		    }
+
+		    .action_box .action_back,.action_box .action_back:link {
+		        display:block;
+		        margin:10px 0 16px;
+		        height:34px;
+		        width:34px;
+		        background:url(images/icon_actions.jpg) no-repeat;
+		        cursor:pointer;
+		    }
+
+	        .action_box .action_back:hover {
+	           background:url(images/icon_actions.jpg) no-repeat 0 -57px;
+	       }
+
+			.action_box .inner p {
+		        font-size:18px;
+		        font-weight:normal;
+		        margin-bottom:25px;
+		    }
+
+		    .action_box .inner p.title {
+		    	margin-bottom: 10px;
+		    }
+            
+            .action_box .inner p.size {
+            	display: block;
+				-webkit-margin-before: 1em;
+				-webkit-margin-after: 1em;
+				-webkit-margin-start: 0px;
+				-webkit-margin-end: 0px;
+            }
+            
+		    .action_box .inner #contactVlaue {
+		    	padding: 2px; 
+		    	width: 208px;
+		    	margin-bottom:10px;
+		    }
+        /*share*/
+        #share {
+        	display: none;
+		    right:-275px;
+        }
+
+		#share span {
+	        margin:0 0 15px;
+	        float:none;
+	        font-size:16px;
+	    }
+
+		    .jiathis_style {
+		    	padding-left:35px;
+		    }
+
+		    .jiathis_style .tsina {
+		    	background-position: 0px 0px;
+		    }
+
+		    .jiathis_style .jiathis_seprator {
+		    	display: block;
+		    	float: left;
+		    	margin: 0 5px;
+		    	line-height: 32px!important;
+		    }
+
+		    .jiathis_style .jiathis_txt {
+		    	float: left;
+		    	text-decoration: none;
+		    	line-height: 32px!important;
+		    }
+
+		    .jiathis_style .jtico {
+		    	text-align: left;
+		    	overflow: hidden;
+		    	display: block;
+		    	height: 32px!important;
+		    	line-height: 32px!important;
+		    	padding-left: 36px!important;
+		    	background: url(images/jiathis_ico_32x32.png) no-repeat left;
+		    	cursor:pointer;
+		    }
+
+		    .jiathis_style .renren {
+		    	background-position: 0px -64px;
+		    }
+
+		    .jiathis_style .qzone {
+		    	background-position: 0px -32px;
+		    }
+
+		    .jiathis_style .tqq {
+		    	background-position: 0px -1760px;
+		    }
+
+		    .jiathis_style .jtico_jiathis {
+		    	background-position: 0px -2048px;
+		    }
+        
+        /*feedback*/
+        #feedabck {
+        	display: none;
+		    right: -275px;
+        }
+
+        #feedback .mail {
+	        color:#06c;
+	    }
+
+	    #feedback textarea {
+	        width:200px;
+	        height:158px;
+	        padding:5px;
+	        margin:5px 0 10px;
+	    }
+
+	    #feedback .survey_include_btn {
+	        width:100px;
+	        height:34px;
+	        font-size:16px;
+	        color:#fff;
+	        background:#0072c6;
+	        border:none;
+	        cursor:pointer;
+	    }
+
+	    #feedback .survey_btn_cur {
+	        opacity:0.7;
+	    }
+
+	    #feedback .feedback_right {
+	        display:none;
+	        font-size:18px;
+	        padding:6px 30px;
+	        background:url(images/icon_right.gif) no-repeat left center;
+	    }
+
+        /*attention*/
+        #attention {
+        	display: none;
+		    right: -275px;
+        }
+
+        #attention .block {
+	        width:220px;
+	        height:50px;
+	        padding-bottom:20px;
+	    }
+
+	    #attention .img {
+	        float:left;
+	    }
+
+	    #attention .txt {
+	        display:table;
+	        float:left;
+	        width:70px;
+	        height:50px;
+	        font-size:16px;
+	        padding-left:14px;
+	    }
+
+	    #attention .special {
+	    	padding-top: 0;
+	    }
+
+	    #attention .guanzhu {
+	        display:inline-block;
+	        width:60px;
+	        height:20px;
+	        background:url(images/weibo_guanzhu.gif) no-repeat;
+	        margin:13px 0 0 20px;
+	    }
+	</style>
+</head>
+<body onload="autoTabStart()">
+<!--header start-->
+    <div id="header">
+        <div class="w1000">
+        	<div id="logo">
+                <a href="http://bing.msn.cn/dict/"><img src="images/logo.gif" alt="必应词典" /></a>	
+        	</div>
+        	<div id="products">
+        	    <ul>
+        	    	<li><a href="http://bing.msn.cn/" target="_blank">必应软件中心</a></li>
+                    <li><a href="http://cn.bing.com/" target="_blank">必应搜索</a></li>
+                    <li><a href="http://cn.msn.com/" target="_blank">MSN中文网</a></li>
+                    <li><a id="add_favorite" href="javascript:;">加入收藏</a></li>
+        	    </ul>
+        	</div>
+        </div>
+    </div>
+<!--header end-->
+<!--nav start-->
+    <div id="nav">
+        <div class="w1000">
+            <ul>
+	            <li><a href="http://bing.msn.cn/dict/index.shtml">首页</a></li>
+	            <li><a href="http://bing.msn.cn/dict/desktop">桌面版</a></li>
+	            <li><a href="http://bing.msn.cn/dict/wp">移动版</a></li>
+	            <li><a href="http://bing.msn.cn/dict/other">周边</a></li>
+	            <li><a href="http://bing.msn.cn/dict/faq">有求必应</a></li>
+	        </ul>
+        </div>
+    </div>
+<!--nav end-->	
+<!--slide start-->
+    <div id="slide">
+        <div id="slide_mask"></div>
+    	<div class="slide_main">
+    		<ul id="slide_img_wrap">
+    		    <li><a target="_blank" name="bing_banner_image" href="http://bing.msn.cn/dict/desktop"><img src ="images/PC版.jpg" /></a></li>
+    		    <li style="display:none;"><a target="_blank" name="bing_banner_image" href="http://bing.msn.cn/dict/mobile/iphone"><img src="images/IOS版.jpg" /></a></li>
+    		    <li style="display:none;"><a target="_blank" name="bing_banner_image" href="http://bing.msn.cn/dict/android"><img src="images/Android版.jpg" /></a></li>
+    		</ul>
+    	</div>
+    	<div class="slide_navi">
+    		<div id="inner">
+    			<span class="slide_navi_cur"></span>
+    			<span></span>
+    			<span></span>
+    		</div>
+    	</div>
+    </div>
+<!--slide end-->
+<!--activities start-->
+    <div id="activities">
+    	<p class="activities_name">热门活动</p>
+    	<ul>
+    	    <li>
+	    	    <div class="img">
+	    	        <a target="_blank" href="http://bing.msn.cn/pinyin"><img src="images/pifudasai.jpg" /></a>
+	    	    </div>
+	    	    <div class="desc">
+	    	        <p class="desc_name">
+	    	            <a target="_blank" href="http://bing.msn.cn/pinyin">必应输入法皮肤大赛</a>
+	    	        </p>
+	    	        <p>必应输入法首届皮肤大赛，把你的皮肤作品分享给用户，还能赢大奖！</p>
+	    	    </div>
+	    	</li>
+	    	<li class="even">
+	    	    <div class="img">
+	    	        <a target="_blank" href="http://bing.msn.cn/dict/wordgame/index.shtml"><img src="images/yingdajiang.jpg" /></a>
+	    	    </div>
+	    	    <div class="desc">
+	    	        <p class="desc_name">
+	    	            <a target="_blank" href="http://bing.msn.cn/dict/wordgame/index.shtml">必应词典在手，英语考试无忧</a>
+	    	        </p>
+	    	        <p>来必应词典，参加单词挑战，听必应电台，用生词本云同步，轻轻松松搞定英语！快乐学英语，还有机会赢大奖！</p>
+	    	    </div>
+	    	</li>
+	    </ul>
+	</div>
+<!--activities end-->
+<!--footer start-->
+    <div class="footer">
+        <div class="w1000">
+            <div class="friend_link">
+            	<p><a href="http://bing.msn.cn" target="_blank"><img src="images/bg_bing_center.jpg" /></a></p>
+            	<ul>
+            		<li class="on"><a href="http://cn.bing.com/" target="_blank">
+                                        <span class="bing_product bing_search"></span>必应搜索</a>
+                    </li>
+                    <li><a href="http://dict.bing.msn.cn/" target="_blank">
+                            <span class="bing_product bing_dict"></span>必应词典</a>
+                    </li>
+                    <li><a href="http://desktop.bing.msn.cn/" target="_blank">
+                            <span class="bing_product bing_desktop"></span>必应缤纷桌面</a>
+                    </li>
+                    <li><a href="http://pinyin.engkoo.com/" target="_blank">
+                            <span class="bing_product bing_pinyin"></span>必应输入法</a>
+                    </li>
+                    <li><a href="http://bingbar.bing.msn.cn/" target="_blank">
+                            <span class="bing_product bing_bar"></span>必应工具栏</a>
+                    </li>
+                    <li><a href="http://cn.bing.com/123" target="_blank">
+                            <span class="bing_product bing_navi"></span>必应导航</a>
+                    </li>
+                    <li><a href="http://renlifang.msra.cn/Q20/index.aspx" target="_blank">
+                            <span class="bing_product bing_robert"></span>必应读心机器人</a>
+                    </li>
+                    <li><a href="http://www.windowsphone.com/zh-cn/store/app/%E5%BF%85%E5%BA%94%E5%9C%B0%E5%9B%BE/3d382aea-9c62-4681-bc39-d7a08266640e" target="_blank"><span class="bing_product bing_map"></span>必应地图</a></li>
+            	</ul>
+            </div>
+            <ul class="copyright">
+                <li class="on">&copy;<span>2013 Microsoft 版权所有</span></li>
+                <li><a target="_blank" href="http://www.microsoft.com/privacystatement/zh-cn/core/default.aspx">隐私声明</a></li>
+                <li><a target="_blank" href="http://windows.microsoft.com/zh-CN/windows-live/microsoft-service-agreement">使用条款</a></li>
+                <li><a target="_blank" href="http://bing.msn.cn/dict/feedback/web/">联系我们</a></li>
+            </ul>
+            <ul class="icp_num">
+                <li><span>ICP证合字B2-20050001号</span></li>
+                <li><span>沪ICP备10042051号</span></li>
+                <li>
+                    <img src="images/ms_logo.jpg" />
+                </li>
+            </ul> 
+        </div>	
+    </div>
+<!--footer end-->
+<!--actions start-->
+    <div id="actions">
+    	<a href="" id="toShare"></a>
+    	<a href="" id="toFeedback"></a>
+    	<a href="" id="toAttention"></a>
+    </div>
+    <div id="share" class="action_box">
+        <div class="inner">
+            <div class="action_back"></div>
+            <p>分享给好友</p>
+             <div class="jiathis_style">
+                <a class="button_tsina" title="分享到新浪微博" href="http://service.weibo.com/share/share.php?title=%E6%95%B4%E5%90%88%E5%BE%AE%E8%BD%AF%E4%BA%9A%E6%B4%B2%E7%A0%94%E7%A9%B6%E9%99%A2%E6%9C%80%E6%96%B0%E7%A0%94%E7%A9%B6%E6%88%90%E6%9E%9C%EF%BC%8C%E8%A6%86%E7%9B%96PC%2FWin+8%2FWP%2FiOS%2F%E5%AE%89%E5%8D%93%EF%BC%8C%E5%86%85%E7%BD%AE%E4%BA%91%E7%94%9F%E8%AF%8D%E6%9C%AC%2F%E5%BF%85%E5%BA%94%E7%94%B5%E5%8F%B0%2F%E5%8D%95%E8%AF%8D%E6%8C%91%E6%88%98%EF%BC%9B%E5%BF%85%E5%BA%94%E8%AF%8D%E5%85%B8%EF%BC%8C%E8%AE%A9%E6%82%A8%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E6%9B%B4%E8%BD%BB%E6%9D%BE%EF%BC%81+%40%E5%BF%85%E5%BA%94%E8%AF%8D%E5%85%B8%20+&url=http%3A%2F%2Ft.jiathis.com%2FFIb&source=bookmark&appkey=2992571369&pic=http%3A%2F%2Fstimgcn1.s-msn.com%2F%255Cmsnportal%255Cbingmsncn%2F2014%2F06%2F27%2F92e4d0ab-694f-4546-8359-7f69344714f9.jpg&ralateUid=">
+                    <span class="jiathis_txt jiathis_separtor jtico tsina">新浪微博</span>
+                </a>
+                <a class="button_renren" title="分享到人人网" href="http://widget.renren.com/dialog/share?resourceUrl=http%3A%2F%2Fbing.msn.cn%2Fdict%23jtss-renren&srcUrl=http%3A%2F%2Fbing.msn.cn%2Fdict%23jtss-renren&title=%E6%95%B4%E5%90%88%E5%BE%AE%E8%BD%AF%E4%BA%9A%E6%B4%B2%E7%A0%94%E7%A9%B6%E9%99%A2%E6%9C%80%E6%96%B0%E7%A0%94%E7%A9%B6%E6%88%90%E6%9E%9C%EF%BC%8C%E8%A6%86%E7%9B%96PC%2FWin+8%2FWP%2FiOS%2F%E5%AE%89%E5%8D%93%EF%BC%8C%E5%86%85%E7%BD%AE%E4%BA%91%E7%94%9F%E8%AF%8D%E6%9C%AC%2F%E5%BF%85%E5%BA%94%E7%94%B5%E5%8F%B0%2F%E5%8D%95%E8%AF%8D%E6%8C%91%E6%88%98%EF%BC%9B%E5%BF%85%E5%BA%94%E8%AF%8D%E5%85%B8%EF%BC%8C%E8%AE%A9%E6%82%A8%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E6%9B%B4%E8%BD%BB%E6%9D%BE%EF%BC%81+%40%E5%BF%85%E5%BA%94%E8%AF%8D%E5%85%B8&pic=http%3A%2F%2Fstimgcn1.s-msn.com%2F%255Cmsnportal%255Cbingmsncn%2F2014%2F06%2F27%2F92e4d0ab-694f-4546-8359-7f69344714f9.jpg&description=+">
+                    <span class="jiathis_txt jiathis_separtor jtico renren">人人网</span>
+                </a>
+                <a class="button_qzone" title="分享到QQ空间" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fbing.msn.cn%2Fdict%23jtss-qzone&title=%E6%95%B4%E5%90%88%E5%BE%AE%E8%BD%AF%E4%BA%9A%E6%B4%B2%E7%A0%94%E7%A9%B6%E9%99%A2%E6%9C%80%E6%96%B0%E7%A0%94%E7%A9%B6%E6%88%90%E6%9E%9C%EF%BC%8C%E8%A6%86%E7%9B%96PC%2FWin+8%2FWP%2FiOS%2F%E5%AE%89%E5%8D%93%EF%BC%8C%E5%86%85%E7%BD%AE%E4%BA%91%E7%94%9F%E8%AF%8D%E6%9C%AC%2F%E5%BF%85%E5%BA%94%E7%94%B5%E5%8F%B0%2F%E5%8D%95%E8%AF%8D%E6%8C%91%E6%88%98%EF%BC%9B%E5%BF%85%E5%BA%94%E8%AF%8D%E5%85%B8%EF%BC%8C%E8%AE%A9%E6%82%A8%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E6%9B%B4%E8%BD%BB%E6%9D%BE%EF%BC%81+%40%E5%BF%85%E5%BA%94%E8%AF%8D%E5%85%B8&pics=http%3A%2F%2Fstimgcn1.s-msn.com%2F%255Cmsnportal%255Cbingmsncn%2F2014%2F06%2F27%2F92e4d0ab-694f-4546-8359-7f69344714f9.jpg&summary=+">
+                    <span class="jiathis_txt jiathis_separtor jtico qzone">QQ空间</span>
+                </a>
+                <a class="button_tqq" title="分享到腾讯微博" href="http://share.v.t.qq.com/index.php?c=share&a=index&title=%E6%95%B4%E5%90%88%E5%BE%AE%E8%BD%AF%E4%BA%9A%E6%B4%B2%E7%A0%94%E7%A9%B6%E9%99%A2%E6%9C%80%E6%96%B0%E7%A0%94%E7%A9%B6%E6%88%90%E6%9E%9C%EF%BC%8C%E8%A6%86%E7%9B%96PC%2FWin+8%2FWP%2FiOS%2F%E5%AE%89%E5%8D%93%EF%BC%8C%E5%86%85%E7%BD%AE%E4%BA%91%E7%94%9F%E8%AF%8D%E6%9C%AC%2F%E5%BF%85%E5%BA%94%E7%94%B5%E5%8F%B0%2F%E5%8D%95%E8%AF%8D%E6%8C%91%E6%88%98%EF%BC%9B%E5%BF%85%E5%BA%94%E8%AF%8D%E5%85%B8%EF%BC%8C%E8%AE%A9%E6%82%A8%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E6%9B%B4%E8%BD%BB%E6%9D%BE%EF%BC%81+%40%E5%BF%85%E5%BA%94%E8%AF%8D%E5%85%B8%20+&url=http%3A%2F%2Fs.ujian.cc%2Fm9PP&appkey=ce15e084124446b9a612a5c29f82f080&site=www.jiathis.com&pic=http%3A%2F%2Fstimgcn1.s-msn.com%2F%255Cmsnportal%255Cbingmsncn%2F2014%2F06%2F27%2F92e4d0ab-694f-4546-8359-7f69344714f9.jpg">
+                    <span class="jiathis_txt jiathis_separtor jtico tqq">腾讯微博</span>
+                </a>
+                <a href="http://www.jiathis.com/share?uid=1775535" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank">更多</a>
+            </div>
+        </div>
+    </div>
+    <div id="feedback" class="action_box">
+        <div class="inner">
+            <div class="action_back"></div>
+            <p class="title">留下您宝贵的意见</p>
+            <div class="block">
+                您也可以发送邮件到:<br />
+                <a class="mail" href="mailto:bingclientQA@microsoft.com">bingclientQA@microsoft.com</a>
+                <form method="post" id="form_Survey">
+                    <textarea name="data"></textarea>
+                    <p class="size">如果您留下邮件地址，我们可以更方便地和您联系以解决使用中遇到的问题。</p>
+                    <input type="text" id="contactVlaue" />
+                    <p class="survey_include_btns">
+                        <input type="submit" value="提交" class="survey_include_btn" />
+                    </p>
+                </form>
+            </div>
+            <div class="feedback_right">提交成功！</div>
+        </div>
+    </div>
+    <div id="attention" class="action_box">
+        <div class="inner">
+            <div class="action_back"></div>
+            <p>关注我们的微博</p>
+            <div class="block">
+                <a href="http://weibo.com/bingisfordoing" target="_blank">
+                    <span class="img">
+                        <img src="images/bing.gif" /></span>
+                    <span class="txt">必应搜索</span>
+                </a>
+                <a href="http://weibo.com/bingisfordoing" target="_blank" class="guanzhu"></a>
+            </div>
+            <div class="block">
+                <a href="http://weibo.com/msnchina" target="_blank">
+                    <span class="img">
+                        <img src="images/msn.gif" /></span>
+                    <span class="txt">微软MSN</span>
+                </a>
+                <a href="http://weibo.com/msnchina" target="_blank" class="guanzhu"></a>
+            </div>
+            <div class="block">
+                <a href="http://weibo.com/msnbingdict" target="_blank">
+                    <span class="img">
+                        <img src="images/bing_dict.gif" /></span>
+                    <span class="txt">必应词典</span>
+                </a>
+                <a href="http://weibo.com/msnbingdict" target="_blank" class="guanzhu"></a>
+            </div>
+            <div class="block">
+                <a href="http://weibo.com/engkoopinyin" target="_blank">
+                    <span class="img">
+                        <img src="images/weibo_bing_shurufa.jpg" /></span>
+                    <span class="txt special" >必应输入法</span>
+                </a>
+                <a href="http://weibo.com/engkoopinyin" target="_blank" class="guanzhu"></a>
+            </div>
+        </div>
+    </div>
+<!--actions end-->
+    <script type="text/javascript">
+	    /* slide */
+	    var cont = document.getElementById("slide_img_wrap").getElementsByTagName("li"),
+	    navi = document.getElementById("inner").getElementsByTagName("span"),
+	    index,slideTimer;
+	    
+		var getCurIndex = function()
+		{
+			for(var a=0;a<navi.length;a++)
+			{
+				if(navi[a].className.indexOf("slide_navi_cur")!=-1)
+				    return a;
+			}
+		}
+
+		var show = function(index)
+		{
+            for(var k=0;k<navi.length;k++)
+		        {
+		        	cont[k].style.display = "none";
+		        	navi[k].className = "";
+		        }
+			cont[index].style.display = "";
+			navi[index].className = "slide_navi_cur";
+		}
+
+		var auto_slide = function(s)
+		{
+			index=getCurIndex();
+			if(s)
+			{
+				index++;
+				if(index >= navi.length)
+					index = 0;
+			}
+			show(index);
+		}
+
+		var autoTabStart = function()
+		{
+		    slideTimer = setInterval(function(){auto_slide(true);},2000);
+		}
+
+		var autoTapStop = function()
+		{
+		 	clearInterval(slideTimer);
+		}
+
+		for (var i=0;i<navi.length;i++)
+	    {
+	        var navi_item = navi[i];
+	        navi_item.onclick = function()
+	        {
+	        	autoTapStop();
+	          	index = 0;
+	          	for(var j=0;j<navi.length;j++)
+	          	{
+	          		if(this==navi[j])
+	          		{
+	          			index = j;
+	          			break;
+	          		}
+	          	}
+	          	show(index);
+	          	setTimeout(autoTabStart(),2000);
+	        }  
+		}
+
+		/* add_Favorite */ 
+		var url = document.write(document.URL),
+		    title = document.write(document.title),
+		    addf = document.getElementById("add_favorite");
+		addf.onclick = function(url, title) 
+		{
+	        if (document.all) {
+	            window.external.addFavorite(url, title);
+	        }
+	        else if (window.sidebar) {
+	            window.sidebar.addPanel(title, url, "");
+	        }
+	        else
+	            alert('对不起，您的浏览器不支持直接收藏，请按 "ctrl+D"将网站收藏。');
+        }  
+
+        /* 打开右侧操作框 */
+        var a = document.getElementById("actions").getElementsByTagName("a");
+        var b = new Array();
+            b[0] = document.getElementById("share");
+            b[1] = document.getElementById("feedback");
+            b[2] = document.getElementById("attention");
+        a[0].onclick = function()
+            {
+            	b[0].style.display = "block";
+            	b[0].style.right = "0px";
+            }
+        a[1].onclick = function()
+            {
+            	b[1].style.display = "block";
+            	b[1].style.right = "0px";
+            }
+        a[2].onclick = function()
+            {
+            	b[2].style.display = "block";
+            	b[2].style.right = "0px";
+            }
+        
+        /* 关闭右侧操作框 */
+        var c = new Array();
+            c[0]=document.getElementById("share").getElementsByClassName("action_back");
+            c[1]=document.getElementById("feedback").getElementsByClassName("action_back");
+            c[2]=document.getElementById("attention").getElementsByClassName("action_back");
+        var d = new Array();
+            d[0] = document.getElementById("share");
+            d[1] = document.getElementById("feedback");
+            d[2] = document.getElementById("attention"); 
+    	c[0].onclick = function()
+    	{
+    		d[0].style.right = "-275px";
+    		d[0].style.display ="none";
+    	}
+    	c[1].onclick = function()
+    	{
+    		d[1].style.right = "-275px";
+    		d[1].style.display ="none";	
+    	}
+    	c[2].onclick = function()
+    	{
+    		d[2].style.right = "-275px";
+    		d[2].style.display ="none";
+    	} 		
+	</script>
+</body>
+</html>
